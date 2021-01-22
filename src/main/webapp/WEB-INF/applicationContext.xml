@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+	
+	<context:component-scan base-package="nonprofit.service, nonprofit.dao, nonprofit.model"/>
+	
+	<!-- <bean id="nonProfitService" 
+		name="nonProfitService" 
+		class="nonprofit.service.NonProfitServiceImpl"/>
+		
+    <bean id="nonProfitDao" 
+	    name="nonProfitDao" 
+	    class="nonprofit.dao.NonProfitDaoImpl"/> -->
+	    
+	<tx:annotation-driven proxy-target-class="true"
+		transaction-manager="transactionManager" />    
+		
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="false">	
+		<property name="jndiName" value="java:/LTXJTST1" />
+    </bean> -->
+    
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="false">	
+		<property name="jndiName" value="java:/LTXSYT16_NONPROFIT" />
+    </bean>
+    
+	<!-- <bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="${db.url}" />
+		<property name="schema" value="${db.schema}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+	</bean>	 -->
+	
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="50000000" />
+        <property name="maxInMemorySize" value="50000000" />
+    </bean>
+    
+    <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+        <property name="caches">
+            <set>
+                <bean
+                  class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+                  name="exemptionType"/>
+                <bean
+                  class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+                  name="stateList"/>
+                <bean
+                  class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+                  name="unitType"/>
+                <bean
+                  class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+                  name="streetType"/>
+            </set>
+        </property>
+    </bean>
+</beans>

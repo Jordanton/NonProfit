@@ -1,0 +1,136 @@
+/* common */
+.list-style {
+	list-style-type: square;
+}
+
+.ext-group {
+	display:inline-block;
+}
+
+.form-check {
+	margin-left:15px;
+}
+
+h3 {
+	margin-top:0.5rem;
+}
+.hr {
+	border-top: 1px solid black;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+label {
+	font-weight:600;
+}
+
+.phone-input {
+	width: 10rem;
+	display:unset;
+}
+
+.required::before {
+	content:"* ";
+	color:red;
+	font-weight: bold;
+}
+
+.fund-class-group {
+	border: 1px solid lightgrey;
+	padding: 0 15px;
+	margin-bottom: 15px;
+}
+
+.legend-section {
+	background-color: #337ab7;
+	color:white!important;
+}
+
+.legend-fund-class {
+	width: inherit;
+	margin-left:15px;
+	font-weight:600;
+}
+
+.checkbox-highlight {
+	background-color: #eee;
+	padding:5px;
+	width:100%;
+}
+
+div.card {
+	margin-bottom: 1.25rem;
+}
+
+#google_translate_element {
+	float:left;
+	margin: 0 1rem;
+}
+
+@media all and (max-width: 960px) {
+	#google_translate_element {
+		float:unset;
+	}
+}
+
+/* business page */
+
+
+/* non profit page */
+.simple-text-input {
+	border: none;
+	border-bottom: 1px solid black;
+	width:100%;
+}
+
+.text-underline {
+	text-decoration: underline;
+}
+
+/* confirmation page */
+
+#confirmation-info div:empty {
+	display:none;
+}
+
+#form-warning {
+	margin-bottom: 1rem;
+}
+
+.change-link a {
+	float:right;
+	color:white;
+	text-decoration:underline;
+}
+
+/* certificate page */
+.address-label {
+	font-weight:600;
+}
+
+#certificate-container {
+	border: 1px dashed black;
+	margin-top:15px;
+	margin-bottom:15px;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+#table-div {
+	margin:auto;	
+}
+
+table {
+	text-align:center;
+}
+
+.cursor-not-allowed {
+	cursor: not-allowed;
+}
